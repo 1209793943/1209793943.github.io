@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Tomcat,Linux,HTTPS,APR," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="最近做微信小程序，前端采用微信提供的小程序开发工具开发，因为想用之前学的java开发后端程序，所以采用了Grandle管理的Springboot项目。微信小程序要求后端的接口必须是https接口，大家都知道https相比http协议的优点是安全，但是也大大降低了访问速度（关于http与https的区别请自行百度）。所以在此开启Tomcat9的Apr访问方式，来提高访问速度。  一、获取证书1234">
+<meta name="keywords" content="Tomcat,Linux,HTTPS,APR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在CentOS6.8(X64)配置Tomcat9以HTTPS+APR状态运行">
+<meta property="og:url" content="http://www.superdesigns.cn/2018/04/21/CentOSTomcat9HTTPSAPR/index.html">
+<meta property="og:site_name" content="阿木卜的个人博客">
+<meta property="og:description" content="最近做微信小程序，前端采用微信提供的小程序开发工具开发，因为想用之前学的java开发后端程序，所以采用了Grandle管理的Springboot项目。微信小程序要求后端的接口必须是https接口，大家都知道https相比http协议的优点是安全，但是也大大降低了访问速度（关于http与https的区别请自行百度）。所以在此开启Tomcat9的Apr访问方式，来提高访问速度。  一、获取证书1234">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-22T08:42:50.015Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在CentOS6.8(X64)配置Tomcat9以HTTPS+APR状态运行">
+<meta name="twitter:description" content="最近做微信小程序，前端采用微信提供的小程序开发工具开发，因为想用之前学的java开发后端程序，所以采用了Grandle管理的Springboot项目。微信小程序要求后端的接口必须是https接口，大家都知道https相比http协议的优点是安全，但是也大大降低了访问速度（关于http与https的区别请自行百度）。所以在此开启Tomcat9的Apr访问方式，来提高访问速度。  一、获取证书1234">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.superdesigns.cn/2018/04/21/CentOSTomcat9HTTPSAPR/"/>
+
+
+
+
+
+  <title>在CentOS6.8(X64)配置Tomcat9以HTTPS+APR状态运行 | 阿木卜的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/1209793943"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阿木卜的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.superdesigns.cn/2018/04/21/CentOSTomcat9HTTPSAPR/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿木卜">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/logo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿木卜的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">在CentOS6.8(X64)配置Tomcat9以HTTPS+APR状态运行</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T20:55:26+08:00">
+                2018-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端环境搭建/" itemprop="url" rel="index">
+                    <span itemprop="name">后端环境搭建</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近做微信小程序，前端采用微信提供的小程序开发工具开发，因为想用之前学的java开发后端程序，所以采用了Grandle管理的Springboot项目。微信小程序要求后端的接口必须是https接口，大家都知道https相比http协议的优点是安全，但是也大大降低了访问速度（关于http与https的区别请自行百度）。所以在此开启Tomcat9的Apr访问方式，来提高访问速度。</p>
+<hr>
+<h3 id="一、获取证书"><a href="#一、获取证书" class="headerlink" title="一、获取证书"></a>一、获取证书</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//安装git</span><br><span class="line"># yum install git</span><br><span class="line"></span><br><span class="line">//git获取letsencrypt</span><br><span class="line"># git clone https://github.com/letsencrypt/letsencrypt</span><br><span class="line"></span><br><span class="line"># cd letsencrypt</span><br><span class="line"></span><br><span class="line">//运行letsencrypt-auto</span><br><span class="line"># ./letsencrypt-auto certonly</span><br></pre></td></tr></table></figure>
+<p>之后按照提示填写邮箱，域名，以temporary server方式运行</p>
+<p>运行部署成功后，可以在 /etc/letsencrypt/live/ 下看到域名文件夹，里面是证书。</p>
+<p>证书：<br>cert.pem - 服务器端证书<br>chain.pem - 根证书和中继证书<br>fullchain.pem - 需要的 ssl_certificate 文件<br>privkey.pem - 安全证书 KEY 文件</p>
+<h3 id="二、为Tomcat9配置证书"><a href="#二、为Tomcat9配置证书" class="headerlink" title="二、为Tomcat9配置证书"></a>二、为Tomcat9配置证书</h3><h5 id="修改server-xml"><a href="#修改server-xml" class="headerlink" title="修改server.xml"></a>修改server.xml</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//server.xml</span><br><span class="line">//找到相关配置，去掉注释后修改</span><br><span class="line"></span><br><span class="line">&lt;Connector port=&quot;80&quot; protocol=&quot;HTTP/1.1&quot;</span><br><span class="line">           connectionTimeout=&quot;20000&quot;</span><br><span class="line">           redirectPort=&quot;443&quot; /&gt;</span><br><span class="line">&lt;Connector port=&quot;443&quot; protocol=&quot;org.apache.coyote.http11.Http11AprProtocol&quot;</span><br><span class="line">               maxThreads=&quot;300&quot; SSLEnabled=&quot;true&quot; URIEncoding=&quot;UTF-8&quot;&gt;</span><br><span class="line">        &lt;UpgradeProtocol className=&quot;org.apache.coyote.http2.Http2Protocol&quot; /&gt;</span><br><span class="line">        &lt;SSLHostConfig&gt;</span><br><span class="line">            &lt;Certificate certificateKeyFile=&quot;/etc/letsencrypt/live/&lt;你的域名文件夹&gt;/privkey.pem&quot;</span><br><span class="line">                         certificateFile=&quot;/etc/letsencrypt/live/&lt;你的域名文件夹&gt;/cert.pem&quot;</span><br><span class="line">                         certificateChainFile=&quot;/etc/letsencrypt/live/&lt;你的域名文件夹&gt;/chain.pem&quot;</span><br><span class="line">                         type=&quot;RSA&quot; /&gt;</span><br><span class="line">        &lt;/SSLHostConfig&gt;</span><br><span class="line">&lt;/Connector&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h5 id="修改web-xml"><a href="#修改web-xml" class="headerlink" title="修改web.xml"></a>修改web.xml</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//修改 web.xml</span><br><span class="line">//在&lt;/welcome-file-list&gt;后添加下面代码</span><br><span class="line">&lt;security-constraint&gt;</span><br><span class="line">        &lt;web-resource-collection &gt;</span><br><span class="line">            &lt;web-resource-name &gt;SSL&lt;/web-resource-name&gt;</span><br><span class="line">            &lt;url-pattern&gt;/*&lt;/url-pattern&gt;</span><br><span class="line">        &lt;/web-resource-collection&gt;</span><br><span class="line">        &lt;user-data-constraint&gt;</span><br><span class="line">            &lt;transport-guarantee&gt;CONFIDENTIAL&lt;/transport-guarantee&gt;</span><br><span class="line">        &lt;/user-data-constraint&gt;</span><br><span class="line">&lt;/security-constraint&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="三、安装相关组件"><a href="#三、安装相关组件" class="headerlink" title="三、安装相关组件"></a>三、安装相关组件</h3><p>当完成上述配置后在启动tomcat时可能会报错，装上APR和Tomcat Native后应该就没问题了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">//配置gcc依赖</span><br><span class="line"># yum install gcc</span><br><span class="line"></span><br><span class="line">//安装openssl</span><br><span class="line"># wget https://ftp.openssl.org/source/old/1.1.0/openssl-1.1.0e.tar.gz</span><br><span class="line"># tar -zxvf openssl-1.1.0e.tar.gz</span><br><span class="line"># cd openssl-1.1.0e</span><br><span class="line"># ./config --prefix=/usr/local/openssl</span><br><span class="line"># make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">//安装apr</span><br><span class="line"># cd</span><br><span class="line"># wget https://archive.apache.org/dist/apr/apr-1.5.2.tar.gz</span><br><span class="line"># tar -zxvf apr-1.5.2.tar.gz</span><br><span class="line"># cd apr-1.5.2</span><br><span class="line"># ./configure --prefix=/usr/local/apr</span><br><span class="line"># make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">//安装apr-util</span><br><span class="line"># cd</span><br><span class="line"># wget https://archive.apache.org/dist/apr/apr-util-1.5.4.tar.gz</span><br><span class="line"># tar -zxvf apr-util-1.5.4.tar.gz</span><br><span class="line"># cd apr-util-1.5.4</span><br><span class="line"># ./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/apr</span><br><span class="line"># make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">//安装tomcat-native，在Tomcat的bin目录下自带native安装包</span><br><span class="line">//进入tomcat的bin目录</span><br><span class="line"># cd /tomcat/bin/</span><br><span class="line"># tar -zxvf tomcat-native&lt;你的版本&gt;.tar.gz</span><br><span class="line"># cd tomcat-native&lt;你的版本&gt;/native</span><br><span class="line"># ./configure --with-apr=/usr/local/apr --with-java-home=/usr/local/&lt;你的jdk路径&gt;</span><br><span class="line">--with-ssl=/usr/local/openssl </span><br><span class="line"># make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">//配置环境变量</span><br><span class="line"># vim /etc/profile</span><br><span class="line">//在末尾添加</span><br><span class="line"># export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/apr/lib</span><br><span class="line">//使环境生效</span><br><span class="line"># source /etc/profile</span><br></pre></td></tr></table></figure>
+<h3 id="更新证书"><a href="#更新证书" class="headerlink" title="更新证书"></a>更新证书</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//关闭服务器(Tomcat)</span><br><span class="line">//打开Let&apos;s Encrypt安装目录 //证书有效期只有三个月</span><br><span class="line"># cd /home/cevier/letsencrypt/</span><br><span class="line">#  ./certbot-auto renew</span><br><span class="line">//开启服务器</span><br><span class="line">进入tomcat根目录下bin文件夹内./startup.sh开启Tomcat</span><br><span class="line">./shutdown.sh关闭Tomcat</span><br><span class="line">关于Tomcat的安装请看  http://www.superdesign.xyz/2018/04/21/CentOS_Tomcat9/</span><br><span class="line">关于JDK的安装请看    http://www.superdesign.xyz/2018/04/21/CentOS_JDK1.8/</span><br></pre></td></tr></table></figure>
+<hr>
+<p>参考文章：<br><a href="https://link.jianshu.com?t=http%3A%2F%2Fblog.csdn.net%2Fanukram%2Farticle%2Fdetails%2F78176614" target="_blank" rel="noopener">http://blog.csdn.net/anukram/article/details/78176614</a><br><a href="https://link.jianshu.com?t=http%3A%2F%2Fwww.linuxidc.com%2FLinux%2F2017-05%2F143305.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2017-05/143305.htm</a></p>
+<p><a href="https://www.jianshu.com/p/41522ce1e32a" target="_blank" rel="noopener">https://www.jianshu.com/p/41522ce1e32a</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat.jpg" alt="阿木卜 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>通过WeChat与我联系</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>给我打赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="阿木卜 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="阿木卜 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tomcat/" rel="tag"># Tomcat</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/HTTPS/" rel="tag"># HTTPS</a>
+          
+            <a href="/tags/APR/" rel="tag"># APR</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/21/CentOS_MySQL/" rel="next" title="CentOS6.8(X64)环境下安装Mysql5.7">
+                <i class="fa fa-chevron-left"></i> CentOS6.8(X64)环境下安装Mysql5.7
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/22/GrandleSpringBootJarWar/" rel="prev" title="使用Eclipse+Grandle给Springboot项目打包（War/Jar）">
+                使用Eclipse+Grandle给Springboot项目打包（War/Jar） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/logo.png"
+                alt="阿木卜" />
+            
+              <p class="site-author-name" itemprop="name">阿木卜</p>
+              <p class="site-description motion-element" itemprop="description">记录生活工作学习中的点点滴滴</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.liushiyi.cn" title="LiuShiyi" target="_blank">LiuShiyi</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、获取证书"><span class="nav-number">1.</span> <span class="nav-text">一、获取证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、为Tomcat9配置证书"><span class="nav-number">2.</span> <span class="nav-text">二、为Tomcat9配置证书</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#修改server-xml"><span class="nav-number">2.0.1.</span> <span class="nav-text">修改server.xml</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改web-xml"><span class="nav-number">2.0.2.</span> <span class="nav-text">修改web.xml</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、安装相关组件"><span class="nav-number">3.</span> <span class="nav-text">三、安装相关组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新证书"><span class="nav-number">4.</span> <span class="nav-text">更新证书</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿木卜</span>
+
+  
+</div>
+
+
+  <div class="powered-by"></div>
+
+
+
+
+
+  <div class="theme-info"></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

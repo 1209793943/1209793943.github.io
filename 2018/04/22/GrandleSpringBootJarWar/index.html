@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SpringBoot,Jar,War,Grandle,Eclipse," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="近期在微信小程序的开发中，使用Grandle构建Springboot的项目，由于需要发布到云服务器，所以需要将Eclipse里面的Grandle项目进行打包，比较了两种格式的package，还是觉得War包维护更方便些，现将两种打包方式在此介绍一下。 一、打包成War格式1、修改配置文件1.1、在build.gradle文件中新增apply plugin: war123apply plugin:">
+<meta name="keywords" content="SpringBoot,Jar,War,Grandle,Eclipse">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Eclipse+Grandle给Springboot项目打包（War&#x2F;Jar）">
+<meta property="og:url" content="http://www.superdesigns.cn/2018/04/22/GrandleSpringBootJarWar/index.html">
+<meta property="og:site_name" content="阿木卜的个人博客">
+<meta property="og:description" content="近期在微信小程序的开发中，使用Grandle构建Springboot的项目，由于需要发布到云服务器，所以需要将Eclipse里面的Grandle项目进行打包，比较了两种格式的package，还是觉得War包维护更方便些，现将两种打包方式在此介绍一下。 一、打包成War格式1、修改配置文件1.1、在build.gradle文件中新增apply plugin: war123apply plugin:">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.superdesigns.cn/images/QQ图片20180422111710.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/QQ图片20180422111710.png">
+<meta property="og:updated_time" content="2018-04-22T08:42:27.562Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Eclipse+Grandle给Springboot项目打包（War&#x2F;Jar）">
+<meta name="twitter:description" content="近期在微信小程序的开发中，使用Grandle构建Springboot的项目，由于需要发布到云服务器，所以需要将Eclipse里面的Grandle项目进行打包，比较了两种格式的package，还是觉得War包维护更方便些，现将两种打包方式在此介绍一下。 一、打包成War格式1、修改配置文件1.1、在build.gradle文件中新增apply plugin: war123apply plugin:">
+<meta name="twitter:image" content="http://www.superdesigns.cn/images/QQ图片20180422111710.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.superdesigns.cn/2018/04/22/GrandleSpringBootJarWar/"/>
+
+
+
+
+
+  <title>使用Eclipse+Grandle给Springboot项目打包（War/Jar） | 阿木卜的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/1209793943"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阿木卜的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.superdesigns.cn/2018/04/22/GrandleSpringBootJarWar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿木卜">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/logo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿木卜的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用Eclipse+Grandle给Springboot项目打包（War/Jar）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-22T10:38:35+08:00">
+                2018-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端项目相关/" itemprop="url" rel="index">
+                    <span itemprop="name">后端项目相关</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>近期在微信小程序的开发中，使用Grandle构建Springboot的项目，由于需要发布到云服务器，所以需要将Eclipse里面的Grandle项目进行打包，比较了两种格式的package，还是觉得War包维护更方便些，现将两种打包方式在此介绍一下。</p>
+<h1 id="一、打包成War格式"><a href="#一、打包成War格式" class="headerlink" title="一、打包成War格式"></a>一、打包成War格式</h1><h4 id="1、修改配置文件"><a href="#1、修改配置文件" class="headerlink" title="1、修改配置文件"></a>1、修改配置文件</h4><h5 id="1-1、在build-gradle文件中新增apply-plugin-war"><a href="#1-1、在build-gradle文件中新增apply-plugin-war" class="headerlink" title="1.1、在build.gradle文件中新增apply plugin: war"></a>1.1、在build.gradle文件中新增apply plugin: war</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;java&apos;</span><br><span class="line">apply plugin: &apos;war&apos;</span><br><span class="line">apply plugin: &apos;org.springframework.boot&apos;</span><br></pre></td></tr></table></figure>
+<h5 id="1-2、添加Servlet初始化"><a href="#1-2、添加Servlet初始化" class="headerlink" title="1.2、添加Servlet初始化"></a>1.2、添加Servlet初始化</h5><p>类SpringBootServletInitializer是一个支持 Spring Boot的Spring WebApplicationInitializer实现。除了配置Spring的Dispatcher- Servlet，SpringBootServletInitializer还会在Spring应用程序上下文里查找Filter、 Servlet或ServletContextInitializer类型的Bean，把它们绑定到Servlet容器里。要使用SpringBootServletInitializer，只需创建一个子类，覆盖configure()方法 来指定Spring配置类。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">public class Application extends SpringBootServletInitializer&#123;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">   SpringApplication.run(Application.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">  @Override</span><br><span class="line">  protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) &#123;</span><br><span class="line">      return builder.sources(Application.class);</span><br><span class="line"> 	 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然应用程序里还有其他Spring配置类，但没有必要在这里把它们全部注册进来。 Application类上添加了@SpringBootApplication注解。这会隐性开启组件扫描，而组件扫 描则会发现并应用其他配置类。</p>
+<h4 id="2、构建应用程序"><a href="#2、构建应用程序" class="headerlink" title="2、构建应用程序"></a>2、构建应用程序</h4><p>首先在项目工程名上右键，选择Grandle，Refresh Grandle Project ，在调试栏的Grandle Tasks选项卡中可以看到你的当前项目，如下图所示</p>
+<p><img src="/images/QQ图片20180422111710.png" alt="QQ图片20180422111710"></p>
+<p>点击上图中所示的Run Grandle Tasks,在随后的出现的Grandle Executions 界面如果一片绿色的话，你可以在build/libs里看到一个名为*.war的文件,打包成功，可以用ftp上传到tomcat等容器进行启动。</p>
+<h1 id="二、打成Jar格式"><a href="#二、打成Jar格式" class="headerlink" title="二、打成Jar格式"></a>二、打成Jar格式</h1><h4 id="1、在build-gradle文件中新增"><a href="#1、在build-gradle文件中新增" class="headerlink" title="1、在build.gradle文件中新增"></a>1、在build.gradle文件中新增</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//生成的jar包包名和版本</span><br><span class="line">jar &#123;</span><br><span class="line">baseName = &apos;words&apos;</span><br><span class="line">version =  &apos;0.0.1&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2、构建应用程序-1"><a href="#2、构建应用程序-1" class="headerlink" title="2、构建应用程序"></a>2、构建应用程序</h4><p>首先在项目工程名上右键，选择Grandle，Refresh Grandle Project ，在调试栏的Grandle Tasks选项卡中可以看到你的当前项目，如下图所示</p>
+<p><img src="/images/QQ图片20180422111710.png" alt="QQ图片20180422111710"></p>
+<p>点击上图中所示的Run Grandle Tasks,在随后的出现的Grandle Executions 界面如果一片绿色的话，你可以在build/libs里看到一个名为words-0.0.1.jar的文件,打包成功。不管是在什么操作系统下，在Jar包目录用命令行输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java –jar words-0.0.1.jar</span><br></pre></td></tr></table></figure>
+<p>即可运行项目。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat.jpg" alt="阿木卜 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>通过WeChat与我联系</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>给我打赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="阿木卜 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="阿木卜 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+          
+            <a href="/tags/Jar/" rel="tag"># Jar</a>
+          
+            <a href="/tags/War/" rel="tag"># War</a>
+          
+            <a href="/tags/Grandle/" rel="tag"># Grandle</a>
+          
+            <a href="/tags/Eclipse/" rel="tag"># Eclipse</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/21/CentOSTomcat9HTTPSAPR/" rel="next" title="在CentOS6.8(X64)配置Tomcat9以HTTPS+APR状态运行">
+                <i class="fa fa-chevron-left"></i> 在CentOS6.8(X64)配置Tomcat9以HTTPS+APR状态运行
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/22/HTTP与HTTPS/" rel="prev" title="HTTP与HTTPS">
+                HTTP与HTTPS <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/logo.png"
+                alt="阿木卜" />
+            
+              <p class="site-author-name" itemprop="name">阿木卜</p>
+              <p class="site-description motion-element" itemprop="description">记录生活工作学习中的点点滴滴</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.liushiyi.cn" title="LiuShiyi" target="_blank">LiuShiyi</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、打包成War格式"><span class="nav-number">1.</span> <span class="nav-text">一、打包成War格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、修改配置文件"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1、修改配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1、在build-gradle文件中新增apply-plugin-war"><span class="nav-number">1.0.0.1.1.</span> <span class="nav-text">1.1、在build.gradle文件中新增apply plugin: war</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2、添加Servlet初始化"><span class="nav-number">1.0.0.1.2.</span> <span class="nav-text">1.2、添加Servlet初始化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、构建应用程序"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2、构建应用程序</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、打成Jar格式"><span class="nav-number">2.</span> <span class="nav-text">二、打成Jar格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、在build-gradle文件中新增"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">1、在build.gradle文件中新增</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、构建应用程序-1"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">2、构建应用程序</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿木卜</span>
+
+  
+</div>
+
+
+  <div class="powered-by"></div>
+
+
+
+
+
+  <div class="theme-info"></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
