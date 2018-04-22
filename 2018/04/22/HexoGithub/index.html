@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo,Github," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="使用Hexo+GitHub搭建自己的个人博客前言：电脑系统为window 10专业版，64位  转载自http://www.cnblogs.com/fengxiongZz/p/7707219.html 基础篇1、安装Node.js和配置好Node.js环境​    打开cmd命令行，成功界面如下     2、安装Git和配置好Git环境​    安装成功的象征就是在电脑上任何位置鼠标右键能够出现如">
+<meta name="keywords" content="Hexo,Github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo—_Github">
+<meta property="og:url" content="http://www.superdesigns.cn/2018/04/22/HexoGithub/index.html">
+<meta property="og:site_name" content="阿木卜的个人博客">
+<meta property="og:description" content="使用Hexo+GitHub搭建自己的个人博客前言：电脑系统为window 10专业版，64位  转载自http://www.cnblogs.com/fengxiongZz/p/7707219.html 基础篇1、安装Node.js和配置好Node.js环境​    打开cmd命令行，成功界面如下     2、安装Git和配置好Git环境​    安装成功的象征就是在电脑上任何位置鼠标右键能够出现如">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021222335756-1508643846.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021222542474-1351750125.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021223101193-1524328031.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021223639881-1998790649.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021223928802-1978574025.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021224442443-1196707159.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021224910568-2096615217.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021225015224-1426206003.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021230203912-509196411.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021230241646-1660449756.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021231521646-1099473727.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021231705474-1404994153.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021231833912-663774637.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021232311912-1198771378.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021232413224-1288183746.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021233157224-1386748377.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021233543052-76995831.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021233630568-279882178.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021234107209-1205335399.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021234314146-695835137.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021234528552-610835964.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021234636834-426105098.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021234906724-1938556332.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021235116271-1521882533.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021235812974-84318377.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171021235722365-818312042.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022000227834-1991784353.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022000508865-46787156.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022001237943-657272339.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022001410662-1611125904.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022001738037-1195721153.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022003506287-989970256.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022003901006-103715547.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022004403099-973554681.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022004448334-718941632.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022010205599-777909146.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022111409568-2085619220.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/menu.PNG">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022130548006-715884505.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022131752974-1304180995.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022132830974-1711186645.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022134557677-1397630732.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022134821896-1919728091.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/Title.PNG">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022135935990-739106048.png">
+<meta property="og:image" content="http://www.superdesigns.cn/images/1108615-20171022153458490-1522887938.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022153607990-455892762.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022154106771-1136124634.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022154153849-736840777.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022160832256-1243898939.png">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022161934256-147875476.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022162349615-351220904.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022163624084-1580633243.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022164422818-437243348.png">
+<meta property="og:updated_time" content="2018-04-22T09:42:28.287Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo—_Github">
+<meta name="twitter:description" content="使用Hexo+GitHub搭建自己的个人博客前言：电脑系统为window 10专业版，64位  转载自http://www.cnblogs.com/fengxiongZz/p/7707219.html 基础篇1、安装Node.js和配置好Node.js环境​    打开cmd命令行，成功界面如下     2、安装Git和配置好Git环境​    安装成功的象征就是在电脑上任何位置鼠标右键能够出现如">
+<meta name="twitter:image" content="http://www.superdesigns.cn/images/1108615-20171021222335756-1508643846.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.superdesigns.cn/2018/04/22/HexoGithub/"/>
+
+
+
+
+
+  <title>Hexo—_Github | 阿木卜的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/1209793943"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阿木卜的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.superdesigns.cn/2018/04/22/HexoGithub/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿木卜">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/logo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿木卜的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hexo—_Github</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-22T17:00:16+08:00">
+                2018-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/个人博客/" itemprop="url" rel="index">
+                    <span itemprop="name">个人博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="使用Hexo-GitHub搭建自己的个人博客"><a href="#使用Hexo-GitHub搭建自己的个人博客" class="headerlink" title="使用Hexo+GitHub搭建自己的个人博客"></a>使用Hexo+GitHub搭建自己的个人博客</h1><p>前言：电脑系统为window 10专业版，64位</p>
+<p> 转载自<a href="http://www.cnblogs.com/fengxiongZz/p/7707219.html" target="_blank" rel="noopener">http://www.cnblogs.com/fengxiongZz/p/7707219.html</a></p>
+<h2 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a><strong>基础篇</strong></h2><h4 id="1、安装Node-js和配置好Node-js环境"><a href="#1、安装Node-js和配置好Node-js环境" class="headerlink" title="1、安装Node.js和配置好Node.js环境"></a>1、安装Node.js和配置好Node.js环境</h4><p>​    打开cmd命令行，成功界面如下</p>
+<center><img src="/images/1108615-20171021222335756-1508643846.png" alt="img"></center>
+
+
+
+<h4 id="2、安装Git和配置好Git环境"><a href="#2、安装Git和配置好Git环境" class="headerlink" title="2、安装Git和配置好Git环境"></a>2、安装Git和配置好Git环境</h4><p>​    安装成功的象征就是在电脑上任何位置<strong>鼠标右键</strong>能够出现如下两个选择</p>
+<center> <img src="/images/1108615-20171021222542474-1351750125.png" alt="img"></center>
+
+<p>​    注意：一般出于安全考虑，只有在Git Bash Here中才能进行Git的相关操作。如果需要在cmd命令行里调用Git，那么就要配置电脑的环境变量Path，或者在安装的时候选择use Git from the Windows Command Prompt。这个可有可无，影响不大，成功配置的界面如图</p>
+<center><img src="/images/1108615-20171021223101193-1524328031.png" alt="img"></center> 
+
+<h4 id="3、Github账户注册和新建项目"><a href="#3、Github账户注册和新建项目" class="headerlink" title="3、Github账户注册和新建项目"></a>3、Github账户注册和新建项目</h4><p>​    项目必须要遵守格式：账户名.github.io，不然接下来会有很多麻烦。并且需要勾选Initialize this repository with a README</p>
+<center><img src="/images/1108615-20171021223639881-1998790649.png" alt="img"></center>
+
+<pre><code>在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它。
+</code></pre> <center><img src="/images/1108615-20171021223928802-1978574025.png" alt="img"></center>
+
+
+
+<h4 id="4、安装Hexo"><a href="#4、安装Hexo" class="headerlink" title="4、安装Hexo"></a>4、安装Hexo</h4><p>​    在自己认为合适的地方创个文件夹，我是在D盘建了一个blog文件夹。然后通过命令行进入到该文件夹里面<center><img src="/images/1108615-20171021224442443-1196707159.png" alt="img"></center></p>
+<p>​    输入npm install hexo -g，开始安装Hexo</p>
+<center><img src="/images/1108615-20171021224910568-2096615217.png" alt="img"></center>
+
+<p>​    输入hexo -v，检查hexo是否安装成功</p>
+<center><img src="/images/1108615-20171021225015224-1426206003.png" alt="img"></center>
+
+<p>​    输入hexo init，初始化该文件夹（有点漫长的等待。。。）</p>
+<center><img src="/images/1108615-20171021230203912-509196411.png" alt="img"></center>
+
+<center><img src="/images/1108615-20171021230241646-1660449756.png" alt="img"></center>
+
+<p>​    看到后面的“Start blogging with Hexo！”，激动有木有！！！！！</p>
+<p>​    输入npm install，安装所需要的组件</p>
+<center><img src="/images/1108615-20171021231521646-1099473727.png" alt="img"></center>
+
+<p>​    输入hexo g，首次体验Hexo</p>
+<center><img src="/images/1108615-20171021231705474-1404994153.png" alt="img"></center>
+
+
+
+<p>​     输入hexo s，开启服务器，访问该网址，正式体验Hexo</p>
+<center><img src="/images/1108615-20171021231833912-663774637.png" alt="img"></center>
+
+<p>​    问题：假如页面一直无法跳转，那么可能端口被占用了。此时我们ctrl+c停止服务器，接着输入“hexo server -p 端口号”来改变端口号</p>
+<center><img src="/images/1108615-20171021232311912-1198771378.png" alt="img"></center>
+
+<p>​    那么出现如下图就成功了</p>
+<center><img src="/images/1108615-20171021232413224-1288183746.png" alt="img"></center>
+
+
+
+
+
+<h4 id="5、将Hexo与Github-page联系起来"><a href="#5、将Hexo与Github-page联系起来" class="headerlink" title="5、将Hexo与Github page联系起来"></a>5、将Hexo与Github page联系起来</h4><p>​    设置Git的user name和email（如果是第一次的话）</p>
+<center> <img src="/images/1108615-20171021233157224-1386748377.png" alt="img"></center>
+
+<p>​    上图是在其文件夹里面鼠标右键，点击Git Base Here。这里“feng”可以替换成自己的用户名，邮箱可以替换成自己的邮箱</p>
+<p>​    输入cd ~/.ssh，检查是否由.ssh的文件夹</p>
+<center><img src="/images/1108615-20171021233543052-76995831.png" alt="img"></center>
+
+<p>​    输入ls，列出该文件下的内容。下图说明存在</p>
+<center><img src="/images/1108615-20171021233630568-279882178.png" alt="img"></center>
+
+<p>​     输入ssh-keygen -t rsa -C “<a href="mailto:929762930@qq.com" target="_blank" rel="noopener">929762930@qq.com</a>”，连续三个回车，生成密钥，最后得到了两个文件：id_rsa和id_rsa.pub（默认存储路径是：C:\Users\Administrator.ssh）。</p>
+<center> <img src="/images/1108615-20171021234107209-1205335399.png" alt="img"></center>
+
+<pre><code>输入eval &quot;$(ssh-agent -s)&quot;，添加密钥到ssh-agent
+</code></pre><center><img src="/images/1108615-20171021234314146-695835137.png" alt="img"></center>
+
+
+
+<pre><code>再输入ssh-add ~/.ssh/id_rsa，添加生成的SSH key到ssh-agent
+</code></pre><center><img src="/images/1108615-20171021234528552-610835964.png" alt="img"></center>
+
+
+
+<p>​     登录Github，点击头像下的settings，添加ssh</p>
+<center><img src="/images/1108615-20171021234636834-426105098.png" alt="img"></center>
+
+
+
+<p>​    新建一个new ssh key，将id_rsa.pub文件里的内容复制上去</p>
+<center><img src="/images/1108615-20171021234906724-1938556332.png" alt="img"></center>
+
+
+
+<p>​    输入ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>，测试添加ssh是否成功。如果看到Hi后面是你的用户名，就说明成功了</p>
+<center><img src="/images/1108615-20171021235116271-1521882533.png" alt="img"></center>
+
+
+
+<h4 id="6、配置Deployment"><a href="#6、配置Deployment" class="headerlink" title="6、配置Deployment"></a>6、配置Deployment</h4><p>​    在其文件夹中，找到_config.yml文件，修改repo值（在末尾）</p>
+ <center><img src="/images/1108615-20171021235812974-84318377.png" alt="img"></center>
+
+
+
+<p>​    repo值是你在github项目里的ssh（右下角）</p>
+<center><img src="/images/1108615-20171021235722365-818312042.png" alt="img"></center>
+
+
+
+<h4 id="7、新建一篇博客"><a href="#7、新建一篇博客" class="headerlink" title="7、新建一篇博客"></a>7、新建一篇博客</h4><p>​    在cmd执行命令：hexo new post “博客名”</p>
+<center><img src="/images/1108615-20171022000227834-1991784353.png" alt="img"></center>
+
+
+
+<p>​     这时候在文件夹_posts目录下将会看到已经创建的文件</p>
+<center><img src="/images/1108615-20171022000508865-46787156.png" alt="img"></center>
+
+
+
+<p>​    在生成以及部署文章之前，需要安装一个扩展：npm install hexo-deployer-git –save</p>
+<center><img src="/images/1108615-20171022001237943-657272339.png" alt="img"></center>
+
+
+
+<p>​    使用编辑器编好文章，那么就可以使用命令：hexo d -g，生成以及部署了，编辑器建议使用<a href="https://typora.io/" target="_blank" rel="noopener">Typora</a></p>
+<center> <img src="/images/1108615-20171022001410662-1611125904.png" alt="img"></center>
+
+
+
+<p>​    部署成功后访问你的地址：http://用户名.github.io。那么将看到生成的文章</p>
+<center><img src="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022001738037-1195721153.png" alt="img"></center>
+
+<p>​     好了，到此为止，最基本的也是最全面的hexo+github搭建博客完结。接下来是进阶的操作</p>
+<hr>
+<h2 id="进阶篇"><a href="#进阶篇" class="headerlink" title="进阶篇"></a>进阶篇</h2><p><strong>主题的配置：这里以NexT主题作为题材</strong></p>
+<h4 id="1、安装NexT"><a href="#1、安装NexT" class="headerlink" title="1、安装NexT"></a>1、安装NexT</h4><p>​    在其文件夹中鼠标右键，点击Git Base Here。输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<center><img src="/images/1108615-20171022003506287-989970256.png" alt="img"></center>
+
+
+
+<h4 id="2、启用主题"><a href="#2、启用主题" class="headerlink" title="2、启用主题"></a>2、启用主题</h4><p>​    在站点目录中（blog），打开配置文件_config.yml，修改theme：next</p>
+<center> <img src="/images/1108615-20171022003901006-103715547.png" alt="img"></center>
+
+
+
+<h4 id="3、验证主题"><a href="#3、验证主题" class="headerlink" title="3、验证主题"></a>3、验证主题</h4><p>​    端口号被占用还是得先修改端口号，然后启动服务</p>
+<center> <img src="/images/1108615-20171022004403099-973554681.png" alt="img"></center>
+
+<p>​    如果看到如下界面，说明成功安装了NexT主题</p>
+ <center><img src="/images/1108615-20171022004448334-718941632.png" alt="img"></center>
+
+
+
+<h4 id="4、主题设定"><a href="#4、主题设定" class="headerlink" title="4、主题设定"></a>4、主题设定</h4><p>​    在next主题目录下的_config.yml文件中将scheme设定为Pisces</p>
+<center><img src="/images/1108615-20171022010205599-777909146.png" alt="img"></center>
+
+
+
+<h4 id="5、语言设定"><a href="#5、语言设定" class="headerlink" title="5、语言设定"></a>5、语言设定</h4><p>​    在<strong>站点根目录下</strong>修改配置文件_cofig.yml中的language为zh-Hans（简体中文）</p>
+<center><img src="/images/1108615-20171022111409568-2085619220.png" alt="img"></center>
+
+
+
+<h4 id="6、修改菜单项"><a href="#6、修改菜单项" class="headerlink" title="6、修改菜单项"></a>6、修改菜单项</h4><p>​    在主题目录下修改配置文件_cofig.yml中的menu，增添你想要使用的菜单项</p>
+<center><img src="/images/menu.PNG" alt="menu"></center>
+
+
+
+<h4 id="7、设置侧栏位置"><a href="#7、设置侧栏位置" class="headerlink" title="7、设置侧栏位置"></a>7、设置侧栏位置</h4><p>​    修改主题目录下sidebar的position值</p>
+<center><img src="/images/1108615-20171022130548006-715884505.png" alt="img"></center>
+
+
+
+<h4 id="8、设置头像"><a href="#8、设置头像" class="headerlink" title="8、设置头像"></a>8、设置头像</h4><p>​    在站点根目录下载配置文件中新增avatar，值设置为头像的链接地址。地址可以是网络地址，也可以是本地地址（放置在source/images/ 目录下）</p>
+<center> <img src="/images/1108615-20171022131752974-1304180995.png" alt="img"></center>
+
+
+
+<h4 id="9、设置文章代码主题"><a href="#9、设置文章代码主题" class="headerlink" title="9、设置文章代码主题"></a>9、设置文章代码主题</h4><p>​    在主题目录下修改配置文件highlight_theme，默认值为nomal。可以设置为night</p>
+<center><img src="/images/1108615-20171022132830974-1711186645.png" alt="img"></center>
+
+
+
+<h4 id="10、添加标签页面"><a href="#10、添加标签页面" class="headerlink" title="10、添加标签页面"></a>10、添加标签页面</h4><p>​    前面通过修改next主题下的<code>_config.yml</code>文件中的menu选项，可以在主页面的菜单栏添加标签选项，但是此时点击标签，跳转的页面会显示page not found。此时我们要新建一个页面</p>
+<center><img src="/images/1108615-20171022134557677-1397630732.png" alt="img"></center>
+
+<p>​    在新建的index.md文件中添加type: “tags”</p>
+<center><img src="/images/1108615-20171022134821896-1919728091.png" alt="img"></center>
+
+<p>​    当要为某一篇文章添加标签，只需在b<code>log/source/_post</code>目录下的具体文章的tags中添加标签即可，如：</p>
+<center><img src="/images/Title.PNG" alt="Title"></center>
+
+<p>​    成功后的页面为</p>
+<center><img src="/images/1108615-20171022135935990-739106048.png" alt="img"></center>
+
+
+
+<h4 id="11、添加关于页面"><a href="#11、添加关于页面" class="headerlink" title="11、添加关于页面"></a>11、添加关于页面</h4><p>​    步骤和以上差不多</p>
+<p><center> <img src="/images/1108615-20171022153458490-1522887938.png" alt="img"></center></p>
+<p>在新建的index.md文件中添加如下内容</p>
+<p><img src="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022153607990-455892762.png" alt="img"></p>
+<p>12、在首页添加github导航条，点击<a href="https://github.com/blog/273-github-ribbons" target="_blank" rel="noopener">这里</a>选择需要的样式，然后将代码复制到themes/next/layout/_layout.swig </p>
+<p><img src="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022154106771-1136124634.png" alt="img"></p>
+<p>并将href改为你的github地址，最终界面如图</p>
+<p><img src="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022154153849-736840777.png" alt="img"></p>
+<p>13、实现点击出现桃心效果，点击<a href="http://7u2ss1.com1.z0.glb.clouddn.com/love.js" target="_blank" rel="noopener">这里</a>将代码copy到/themes/next/source/js/src里面新建的love.js中，然后打开\themes\next\layout_layout.swig文件,在末尾（在前面引用会出现找不到的bug） ，引用love.js</p>
+<p><img src="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022160832256-1243898939.png" alt="img"></p>
+<p>14、修改作者头像并旋转，打开\themes\next\source\css_common\components\sidebar\sidebar-author.styl，在里面添加如下代码：</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">.site-author-image &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  margin: 0 auto;</span><br><span class="line">  padding: $site-author-image-padding;</span><br><span class="line">  max-width: $site-author-image-width;</span><br><span class="line">  height: $site-author-image-height;</span><br><span class="line">  border: $site-author-image-border-width solid $site-author-image-border-color;</span><br><span class="line"></span><br><span class="line">  /* 头像圆形 */</span><br><span class="line">  border-radius: 80px;</span><br><span class="line">  -webkit-border-radius: 80px;</span><br><span class="line">  -moz-border-radius: 80px;</span><br><span class="line">  box-shadow: inset 0 -1px 0 #333sf;</span><br><span class="line"></span><br><span class="line">  /* 设置循环动画 [animation: (play)动画名称 (2s)动画播放时长单位秒或微秒 (ase-out)动画播放的速度曲线为以低速结束 </span><br><span class="line">    (1s)等待1秒然后开始动画 (1)动画播放次数(infinite为循环播放) ]*/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  /* 鼠标经过头像旋转360度 */</span><br><span class="line">  -webkit-transition: -webkit-transform 1.0s ease-out;</span><br><span class="line">  -moz-transition: -moz-transform 1.0s ease-out;</span><br><span class="line">  transition: transform 1.0s ease-out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">img:hover &#123;</span><br><span class="line">  /* 鼠标经过停止头像旋转 </span><br><span class="line">  -webkit-animation-play-state:paused;</span><br><span class="line">  animation-play-state:paused;*/</span><br><span class="line"></span><br><span class="line">  /* 鼠标经过头像旋转360度 */</span><br><span class="line">  -webkit-transform: rotateZ(360deg);</span><br><span class="line">  -moz-transform: rotateZ(360deg);</span><br><span class="line">  transform: rotateZ(360deg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* Z 轴旋转动画 */</span><br><span class="line">@-webkit-keyframes play &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    -webkit-transform: rotateZ(0deg);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    -webkit-transform: rotateZ(-360deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@-moz-keyframes play &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    -moz-transform: rotateZ(0deg);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    -moz-transform: rotateZ(-360deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes play &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    transform: rotateZ(0deg);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    transform: rotateZ(-360deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>15、在网站底部加上访问量，打开\themes\next\layout_partials\footer.swig文件,在类copyright前加上画红线这话：</p>
+<p><img src="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022161934256-147875476.png" alt="img"></p>
+<p><code>代码：&lt;script async src=&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>然后在合适的位置添加显示统计的代码(位置还是上述这个文件)，如图：</p>
+<p> <img src="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022162349615-351220904.png" alt="img"></p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;powered-by&quot;&gt;</span><br><span class="line">&lt;i class=&quot;fa fa-user-md&quot;&gt;&lt;/i&gt;&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;</span><br><span class="line">  本站访客数:&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;</span><br><span class="line">&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p> 16、修改底部的官方logo，找到 <code>\themes\next\layout\_partials\</code>下面的<code>footer.swig</code>文件，打开会发现，如下图的语句：</p>
+<p> <img src="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022163624084-1580633243.png" alt="img"></p>
+<p>第一个框 是下面侧栏的“日期❤ XXX”</p>
+<p>如果想像我一样加东西，一定要在双大括号外面写。如：xxx,当然你要是想改彻底可以变量都删掉，看个人意愿。</p>
+<p>第二个，是图一当中 “由Hexo驱动” 的Hexo链接，先给删掉防止跳转，如果想跳转当然也可以自己写地址，至于中文一会处理。注意删除的时候格式不能错，只把<code>&lt;a&gt;...&lt;/a&gt;</code>标签这部分删除即可，留着两个单引号’’,否则会出错哦。</p>
+<p>第三个框也是最后一个了，这个就是更改图一后半部分“主题-Next.XX”,这个比较爽直接将<code>&lt;a&gt;..&lt;/a&gt;</code>都删掉，同样中文“主题”一会处理，删掉之后在上一行 ‘-’后面可以随意加上你想显示的东西，不要显示敏感信息哟，请自重。</p>
+<p>接下来，处理剩余的中文信息。找到这个地方<code>\themes\next\languages\</code> 下面的语言文件zh-Hans.yml（这里以中文为例，有的习惯用英文的配置文件，道理一样，找对应位置即可）</p>
+<p><img src="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171022164422818-437243348.png" alt="img"></p>
+<p>看到了吧，这个就是传值传过去的，你想显示什么就在这里面大肆的去改动吧。其实在第二个框中，就可以把值都改掉，不用接受传值的方式，完全自己可以重写。不过我不建议那样做，因为传值这样只要是后续页面需要这几个值那么就都会通过取值去传过去，要是在刚才footer文件中直接写死，后续不一定哪个页面需要传值，但是值为空了或者还是原来的，可就尴尬了。所以还是这样改动吧。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat.jpg" alt="阿木卜 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>通过WeChat与我联系</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>给我打赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="阿木卜 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="阿木卜 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+            <a href="/tags/Github/" rel="tag"># Github</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/22/HTTP与HTTPS/" rel="next" title="HTTP与HTTPS">
+                <i class="fa fa-chevron-left"></i> HTTP与HTTPS
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/logo.png"
+                alt="阿木卜" />
+            
+              <p class="site-author-name" itemprop="name">阿木卜</p>
+              <p class="site-description motion-element" itemprop="description">记录生活工作学习中的点点滴滴</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.liushiyi.cn" title="LiuShiyi" target="_blank">LiuShiyi</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Hexo-GitHub搭建自己的个人博客"><span class="nav-number">1.</span> <span class="nav-text">使用Hexo+GitHub搭建自己的个人博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础篇"><span class="nav-number">1.1.</span> <span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、安装Node-js和配置好Node-js环境"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">1、安装Node.js和配置好Node.js环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、安装Git和配置好Git环境"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">2、安装Git和配置好Git环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、Github账户注册和新建项目"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">3、Github账户注册和新建项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、安装Hexo"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">4、安装Hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、将Hexo与Github-page联系起来"><span class="nav-number">1.1.0.5.</span> <span class="nav-text">5、将Hexo与Github page联系起来</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、配置Deployment"><span class="nav-number">1.1.0.6.</span> <span class="nav-text">6、配置Deployment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、新建一篇博客"><span class="nav-number">1.1.0.7.</span> <span class="nav-text">7、新建一篇博客</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进阶篇"><span class="nav-number">1.2.</span> <span class="nav-text">进阶篇</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、安装NexT"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">1、安装NexT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、启用主题"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">2、启用主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、验证主题"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">3、验证主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、主题设定"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">4、主题设定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、语言设定"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">5、语言设定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、修改菜单项"><span class="nav-number">1.2.0.6.</span> <span class="nav-text">6、修改菜单项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、设置侧栏位置"><span class="nav-number">1.2.0.7.</span> <span class="nav-text">7、设置侧栏位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、设置头像"><span class="nav-number">1.2.0.8.</span> <span class="nav-text">8、设置头像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9、设置文章代码主题"><span class="nav-number">1.2.0.9.</span> <span class="nav-text">9、设置文章代码主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10、添加标签页面"><span class="nav-number">1.2.0.10.</span> <span class="nav-text">10、添加标签页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11、添加关于页面"><span class="nav-number">1.2.0.11.</span> <span class="nav-text">11、添加关于页面</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿木卜</span>
+
+  
+</div>
+
+
+  <div class="powered-by"></div>
+
+
+
+
+
+  <div class="theme-info"></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
