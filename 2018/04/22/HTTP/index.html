@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="​     转载自http://www.cnblogs.com/fengxiongZz/p/7749030.html  http请求由三部分组成，分别是：请求行、消息报头、请求正文 HTTP（超文本传输协议）是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式，HTTP1.1版本中给出一种持续连接的机制，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用。 特点：">
+<meta name="description" content="http请求由三部分组成，分别是：请求行、消息报头、请求正文 HTTP（超文本传输协议）是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式，HTTP1.1版本中给出一种持续连接的机制，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用。 特点： （1）HTTP是无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接">
 <meta name="keywords" content="HTTP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP协议">
 <meta property="og:url" content="http://www.superdesigns.cn/2018/04/22/HTTP/index.html">
 <meta property="og:site_name" content="阿木卜的个人博客">
-<meta property="og:description" content="​     转载自http://www.cnblogs.com/fengxiongZz/p/7749030.html  http请求由三部分组成，分别是：请求行、消息报头、请求正文 HTTP（超文本传输协议）是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式，HTTP1.1版本中给出一种持续连接的机制，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用。 特点：">
+<meta property="og:description" content="http请求由三部分组成，分别是：请求行、消息报头、请求正文 HTTP（超文本传输协议）是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式，HTTP1.1版本中给出一种持续连接的机制，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用。 特点： （1）HTTP是无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-22T12:07:50.521Z">
+<meta property="og:updated_time" content="2018-04-22T12:09:43.788Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP协议">
-<meta name="twitter:description" content="​     转载自http://www.cnblogs.com/fengxiongZz/p/7749030.html  http请求由三部分组成，分别是：请求行、消息报头、请求正文 HTTP（超文本传输协议）是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式，HTTP1.1版本中给出一种持续连接的机制，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用。 特点：">
+<meta name="twitter:description" content="http请求由三部分组成，分别是：请求行、消息报头、请求正文 HTTP（超文本传输协议）是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式，HTTP1.1版本中给出一种持续连接的机制，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用。 特点： （1）HTTP是无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接">
 
 
 
@@ -352,9 +352,7 @@
       
 
       
-        <p>​     转载自<a href="http://www.cnblogs.com/fengxiongZz/p/7749030.html" target="_blank" rel="noopener">http://www.cnblogs.com/fengxiongZz/p/7749030.html</a></p>
-<hr>
-<p>http请求由三部分组成，分别是：请求行、消息报头、请求正文</p>
+        <p>http请求由三部分组成，分别是：请求行、消息报头、请求正文</p>
 <p>HTTP（超文本传输协议）是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式，HTTP1.1版本中给出一种持续连接的机制，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用。</p>
 <p><strong>特点：</strong></p>
 <p>（1）HTTP是无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</p>
@@ -377,17 +375,30 @@
 <h4 id="8、HTTP优化"><a href="#8、HTTP优化" class="headerlink" title="8、HTTP优化"></a><strong>8、HTTP优化</strong></h4><p>利用负载均衡优化和加速HTTP应用</p>
 <p>利用HTTP Cache来优化网站</p>
 <h4 id="9、一个页面从输入-URL-到页面加载显示完成，这个过程中都发生了什么？"><a href="#9、一个页面从输入-URL-到页面加载显示完成，这个过程中都发生了什么？" class="headerlink" title="9、一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？"></a><strong>9、一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？</strong></h4><ul>
-<li>查找浏览器缓存</li>
-<li>DNS解析、查找该域名对应的IP地址、重定向（301）、发出第二个GET请求</li>
-<li>进行HTTP协议会话</li>
-<li>客户端发送报头(请求报头)</li>
-<li>文档开始下载</li>
-<li>文档树建立，根据标记请求所需指定MIME类型的文件</li>
-<li>文件显示</li>
-<li>浏览器这边做的工作大致分为以下几步：</li>
-<li>加载：根据请求的URL进行域名解析，向服务器发起请求，接收文件（HTML、JS、CSS、图象等）。</li>
-<li>解析：对加载到的资源（HTML、JS、CSS等）进行语法解析，建议相应的内部数据结构（比如HTML的DOM树，JS的（对象）属性表，CSS的样式规则等等）</li>
+<li><p>查找浏览器缓存</p>
+</li>
+<li><p>DNS解析、查找该域名对应的IP地址、重定向（301）、发出第二个GET请求</p>
+</li>
+<li><p>进行HTTP协议会话</p>
+</li>
+<li><p>客户端发送报头(请求报头)</p>
+</li>
+<li><p>文档开始下载</p>
+</li>
+<li><p>文档树建立，根据标记请求所需指定MIME类型的文件</p>
+</li>
+<li><p>文件显示</p>
+</li>
+<li><p>浏览器这边做的工作大致分为以下几步：</p>
+</li>
+<li><p>加载：根据请求的URL进行域名解析，向服务器发起请求，接收文件（HTML、JS、CSS、图象等）。</p>
+</li>
+<li><p>解析：对加载到的资源（HTML、JS、CSS等）进行语法解析，建议相应的内部数据结构（比如HTML的DOM树，JS的（对象）属性表，CSS的样式规则等等）</p>
+<p>​</p>
+</li>
 </ul>
+<hr>
+<p>​     转载自<a href="http://www.cnblogs.com/fengxiongZz/p/7749030.html" target="_blank" rel="noopener">http://www.cnblogs.com/fengxiongZz/p/7749030.html</a></p>
 
       
     </div>
