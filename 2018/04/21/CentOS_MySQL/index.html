@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="阿木卜的个人博客">
 <meta property="og:description" content="1.检测系统是否已经安装过mysql或其依赖若已装过要先将其删除，否则第4步使用yum安装时会报错 12345#yum list installed | grep mysqlmysql-libs.i686 5.1.71-1.el6     @anaconda-CentOS-201311271240.i386/6.5#yum -y remove mysql-libs.i686 2.从mysql的官网">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-22T08:46:10.910Z">
+<meta property="og:updated_time" content="2018-04-23T07:06:18.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS6.8(X64)环境下安装Mysql5.7">
 <meta name="twitter:description" content="1.检测系统是否已经安装过mysql或其依赖若已装过要先将其删除，否则第4步使用yum安装时会报错 12345#yum list installed | grep mysqlmysql-libs.i686 5.1.71-1.el6     @anaconda-CentOS-201311271240.i386/6.5#yum -y remove mysql-libs.i686 2.从mysql的官网">
@@ -388,6 +388,8 @@
 <p>登录mysql后输入如下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to &apos;root&apos; @&apos;%&apos; identified by &apos;root&apos;;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
 <h3 id="11-开放Linux的对外访问的端口3306"><a href="#11-开放Linux的对外访问的端口3306" class="headerlink" title="11.开放Linux的对外访问的端口3306"></a>11.开放Linux的对外访问的端口3306</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/sbin/iptables -I INPUT -p tcp --dport 3306 -j ACCEPT</span><br><span class="line"></span><br><span class="line">/etc/rc.d/init.d/iptables save ---将修改永久保存到防火墙中</span><br></pre></td></tr></table></figure>
+<hr>
+
       
     </div>
     

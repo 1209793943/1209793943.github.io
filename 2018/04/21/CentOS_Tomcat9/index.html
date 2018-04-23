@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="阿木卜的个人博客">
 <meta property="og:description" content="1.上传Tomcat到linux上2.解压Tomcat到/usr/local下1# tar –xvf apache-tomcat-9.0.6.tar.gz–C /usr/local 3.编辑apache-tomcat-9.0.6/conf/server.xml将tomcat端口号改为80 12345&amp;lt;Connectorport=&amp;quot;80&amp;quot; protocol=&amp;quot;HT">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-22T11:47:59.048Z">
+<meta property="og:updated_time" content="2018-04-23T07:06:02.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat9在CentOS6.8(X64)上的安装">
 <meta name="twitter:description" content="1.上传Tomcat到linux上2.解压Tomcat到/usr/local下1# tar –xvf apache-tomcat-9.0.6.tar.gz–C /usr/local 3.编辑apache-tomcat-9.0.6/conf/server.xml将tomcat端口号改为80 12345&amp;lt;Connectorport=&amp;quot;80&amp;quot; protocol=&amp;quot;HT">
@@ -362,6 +362,7 @@
 <h4 id="6-修改脚本文件rc-local：vim-etc-rc-d-rc-local，添加如下内容"><a href="#6-修改脚本文件rc-local：vim-etc-rc-d-rc-local，添加如下内容" class="headerlink" title="6.修改脚本文件rc.local：vim /etc/rc.d/rc.local，添加如下内容"></a>6.修改脚本文件rc.local：vim /etc/rc.d/rc.local，添加如下内容</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ExportJAVA_HOME=/usr/local/jdk1.8.0_161</span><br><span class="line"></span><br><span class="line">/usr/local/apache-tomcat-9.0.6/bin/startup.sh start </span><br><span class="line"></span><br><span class="line">#chmod777 /etc/rc.d/rc.local   ###保存修改，将rc.local修改为可执行</span><br></pre></td></tr></table></figure>
 <h4 id="7-启动关闭Tomcat"><a href="#7-启动关闭Tomcat" class="headerlink" title="7.启动关闭Tomcat"></a>7.启动关闭Tomcat</h4><p>进入tomcat的bin下启动：./startup.sh</p>
 <p>进入tomcat的bin下关闭：./shutdown.sh</p>
+<hr>
 
       
     </div>
