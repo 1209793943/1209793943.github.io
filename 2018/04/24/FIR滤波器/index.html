@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="1 matlab源码f1=100;f2=200;%待滤波正弦信号频率   fs=2000;%采样频率   m=(0.3*f1)/(fs/2);%定义过度带宽   M=round(8/m);%定义窗函数的长度   N=M-1;%定义滤波器的阶数   b=fir1(N,0.5*f2/(fs/2));%使用fir1函数设计滤波器   %输入的参数分别是滤波器的阶数和截止频率   figure(1)">
+<meta name="description" content="1 matlab源码12345678910111213141516171819202122232425262728293031323334353637f1=100;f2=120;%待滤波正弦信号频率fs=2000;%采样频率m=(0.3*f1)/(fs/2);%定义过度带宽M=round(8/m);%定义窗函数的长度N=M-1;%定义滤波器的阶数b=fir1(N,0.5*f2/(fs/2));%使">
 <meta name="keywords" content="FIR,Matlab">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FIR滤波器">
 <meta property="og:url" content="http://www.superdesigns.cn/2018/04/24/FIR滤波器/index.html">
 <meta property="og:site_name" content="阿木卜的个人博客">
-<meta property="og:description" content="1 matlab源码f1=100;f2=200;%待滤波正弦信号频率   fs=2000;%采样频率   m=(0.3*f1)/(fs/2);%定义过度带宽   M=round(8/m);%定义窗函数的长度   N=M-1;%定义滤波器的阶数   b=fir1(N,0.5*f2/(fs/2));%使用fir1函数设计滤波器   %输入的参数分别是滤波器的阶数和截止频率   figure(1)">
+<meta property="og:description" content="1 matlab源码12345678910111213141516171819202122232425262728293031323334353637f1=100;f2=120;%待滤波正弦信号频率fs=2000;%采样频率m=(0.3*f1)/(fs/2);%定义过度带宽M=round(8/m);%定义窗函数的长度N=M-1;%定义滤波器的阶数b=fir1(N,0.5*f2/(fs/2));%使">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.superdesigns.cn/images/20161127214604062">
 <meta property="og:image" content="https://img-blog.csdn.net/20161127214615524">
 <meta property="og:image" content="https://img-blog.csdn.net/20161127214621531">
-<meta property="og:updated_time" content="2018-04-24T02:31:12.592Z">
+<meta property="og:updated_time" content="2018-04-24T02:36:42.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FIR滤波器">
-<meta name="twitter:description" content="1 matlab源码f1=100;f2=200;%待滤波正弦信号频率   fs=2000;%采样频率   m=(0.3*f1)/(fs/2);%定义过度带宽   M=round(8/m);%定义窗函数的长度   N=M-1;%定义滤波器的阶数   b=fir1(N,0.5*f2/(fs/2));%使用fir1函数设计滤波器   %输入的参数分别是滤波器的阶数和截止频率   figure(1)">
+<meta name="twitter:description" content="1 matlab源码12345678910111213141516171819202122232425262728293031323334353637f1=100;f2=120;%待滤波正弦信号频率fs=2000;%采样频率m=(0.3*f1)/(fs/2);%定义过度带宽M=round(8/m);%定义窗函数的长度N=M-1;%定义滤波器的阶数b=fir1(N,0.5*f2/(fs/2));%使">
 <meta name="twitter:image" content="http://www.superdesigns.cn/images/20161127214604062">
 
 
@@ -356,43 +356,7 @@
       
 
       
-        <h2 id="1-matlab源码"><a href="#1-matlab源码" class="headerlink" title="1 matlab源码"></a>1 matlab源码</h2><p>f1=100;f2=200;%待滤波正弦信号频率  </p>
-<p>fs=2000;%采样频率  </p>
-<p>m=(0.3*f1)/(fs/2);%定义过度带宽  </p>
-<p>M=round(8/m);%定义窗函数的长度  </p>
-<p>N=M-1;%定义滤波器的阶数  </p>
-<p>b=fir1(N,0.5*f2/(fs/2));%使用fir1函数设计滤波器  </p>
-<p>%输入的参数分别是滤波器的阶数和截止频率  </p>
-<p>figure(1)  </p>
-<p>[h,f]=freqz(b,1,512);%滤波器的幅频特性图  </p>
-<p>%[H,W]=freqz(B,A,N)当N是一个整数时函数返回N点的频率向量和幅频响应向量  </p>
-<p>plot(f<em>fs/(2</em>pi),20*log10(abs(h)))%参数分别是频率与幅值  </p>
-<p>xlabel(‘频率/赫兹’);ylabel(‘增益/分贝’);title(‘滤波器的增益响应’);  </p>
-<p>figure(2)  </p>
-<p>subplot(211)  </p>
-<p>t=0:1/fs:0.5;%定义时间范围和步长  </p>
-<p>s=sin(2<em>pi</em>f1<em>t)+sin(2</em>pi<em>f2</em>t);%滤波前信号  </p>
-<p>plot(t,s);%滤波前的信号图像  </p>
-<p>xlabel(‘时间/秒’);ylabel(‘幅度’);title(‘信号滤波前时域图’);  </p>
-<p>subplot(212)  </p>
-<p>Fs=fft(s,512);%将信号变换到频域  </p>
-<p>AFs=abs(Fs);%信号频域图的幅值  </p>
-<p>f=(0:255)*fs/512;%频率采样  </p>
-<p>plot(f,AFs(1:256));%滤波前的信号频域图  </p>
-<p>xlabel(‘频率/赫兹’);ylabel(‘幅度’);title(‘信号滤波前频域图’);  </p>
-<p>figure(3)  </p>
-<p>sf=filter(b,1,s);%使用filter函数对信号进行滤波  </p>
-<p>%参数分别为滤波器系统函数的分子和分母多项式系数向量和待滤波信号输入  </p>
-<p>subplot(211)  </p>
-<p>plot(t,sf)%滤波后的信号图像  </p>
-<p>xlabel(‘时间/秒’);ylabel(‘幅度’);title(‘信号滤波后时域图’);  </p>
-<p>axis([0.2 0.5 -2 2]);%限定图像坐标范围  </p>
-<p>subplot(212)  </p>
-<p>Fsf=fft(sf,512);%滤波后的信号频域图  </p>
-<p>AFsf=abs(Fsf);%信号频域图的幅值  </p>
-<p>f=(0:255)*fs/512;%频率采样  </p>
-<p>plot(f,AFsf(1:256))%滤波后的信号频域图  </p>
-<p>xlabel(‘频率/赫兹’);ylabel(‘幅度’);title(‘信号滤波后频域图’);  </p>
+        <h2 id="1-matlab源码"><a href="#1-matlab源码" class="headerlink" title="1 matlab源码"></a>1 matlab源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">f1=100;f2=120;%待滤波正弦信号频率</span><br><span class="line">fs=2000;%采样频率</span><br><span class="line">m=(0.3*f1)/(fs/2);%定义过度带宽</span><br><span class="line">M=round(8/m);%定义窗函数的长度</span><br><span class="line">N=M-1;%定义滤波器的阶数</span><br><span class="line">b=fir1(N,0.5*f2/(fs/2));%使用fir1函数设计滤波器</span><br><span class="line">%输入的参数分别是滤波器的阶数和截止频率</span><br><span class="line">figure(1)</span><br><span class="line">[h,f]=freqz(b,1,512);%滤波器的幅频特性图</span><br><span class="line">%[H,W]=freqz(B,A,N)当N是一个整数时函数返回N点的频率向量和幅频响应向量</span><br><span class="line">plot(f*fs/(2*pi),20*log10(abs(h)))%参数分别是频率与幅值</span><br><span class="line">xlabel(&apos;频率/赫兹&apos;);ylabel(&apos;增益/分贝&apos;);title(&apos;滤波器的增益响应&apos;);</span><br><span class="line">figure(2)</span><br><span class="line">subplot(211)</span><br><span class="line">t=0:1/fs:0.5;%定义时间范围和步长</span><br><span class="line">s=sin(2*pi*f1*t)+sin(2*pi*f2*t);%滤波前信号</span><br><span class="line">plot(t,s);%滤波前的信号图像</span><br><span class="line">xlabel(&apos;时间/秒&apos;);ylabel(&apos;幅度&apos;);title(&apos;信号滤波前时域图&apos;);</span><br><span class="line">subplot(212)</span><br><span class="line">Fs=fft(s,512);%将信号变换到频域</span><br><span class="line">AFs=abs(Fs);%信号频域图的幅值</span><br><span class="line">f=(0:255)*fs/512;%频率采样</span><br><span class="line">plot(f,AFs(1:256));%滤波前的信号频域图</span><br><span class="line">xlabel(&apos;频率/赫兹&apos;);ylabel(&apos;幅度&apos;);title(&apos;信号滤波前频域图&apos;);</span><br><span class="line">figure(3)</span><br><span class="line">sf=filter(b,1,s);%使用filter函数对信号进行滤波</span><br><span class="line">%参数分别为滤波器系统函数的分子和分母多项式系数向量和待滤波信号输入</span><br><span class="line">subplot(211)</span><br><span class="line">plot(t,sf)%滤波后的信号图像</span><br><span class="line">xlabel(&apos;时间/秒&apos;);ylabel(&apos;幅度&apos;);title(&apos;信号滤波后时域图&apos;);</span><br><span class="line">axis([0.2 0.5 -2 2]);%限定图像坐标范围</span><br><span class="line">subplot(212)</span><br><span class="line">Fsf=fft(sf,512);%滤波后的信号频域图</span><br><span class="line">AFsf=abs(Fsf);%信号频域图的幅值</span><br><span class="line">f=(0:255)*fs/512;%频率采样</span><br><span class="line">plot(f,AFsf(1:256))%滤波后的信号频域图</span><br><span class="line">xlabel(&apos;频率/赫兹&apos;);ylabel(&apos;幅度&apos;);title(&apos;信号滤波后频域图&apos;);</span><br></pre></td></tr></table></figure>
 <h2 id="2-结果"><a href="#2-结果" class="headerlink" title="2 结果"></a>2 结果</h2><center><img src="/images/20161127214604062" alt="img"></center>
 
 <center><img src="https://img-blog.csdn.net/20161127214615524" alt="img"></center>
