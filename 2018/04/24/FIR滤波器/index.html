@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="FIR,Matlab," />
 
 
 
@@ -79,17 +79,22 @@
 
 
 
-<meta name="description" content="记录生活工作学习中的点点滴滴">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://www.superdesigns.cn/tags/index.html">
+<meta name="description" content="1 matlab源码f1=100;f2=200;%待滤波正弦信号频率   fs=2000;%采样频率   m=(0.3*f1)/(fs/2);%定义过度带宽   M=round(8/m);%定义窗函数的长度   N=M-1;%定义滤波器的阶数   b=fir1(N,0.5*f2/(fs/2));%使用fir1函数设计滤波器   %输入的参数分别是滤波器的阶数和截止频率   figure(1)">
+<meta name="keywords" content="FIR,Matlab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FIR滤波器">
+<meta property="og:url" content="http://www.superdesigns.cn/2018/04/24/FIR滤波器/index.html">
 <meta property="og:site_name" content="阿木卜的个人博客">
-<meta property="og:description" content="记录生活工作学习中的点点滴滴">
+<meta property="og:description" content="1 matlab源码f1=100;f2=200;%待滤波正弦信号频率   fs=2000;%采样频率   m=(0.3*f1)/(fs/2);%定义过度带宽   M=round(8/m);%定义窗函数的长度   N=M-1;%定义滤波器的阶数   b=fir1(N,0.5*f2/(fs/2));%使用fir1函数设计滤波器   %输入的参数分别是滤波器的阶数和截止频率   figure(1)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-21T07:45:17.512Z">
+<meta property="og:image" content="http://www.superdesigns.cn/images/20161127214604062">
+<meta property="og:image" content="https://img-blog.csdn.net/20161127214615524">
+<meta property="og:image" content="https://img-blog.csdn.net/20161127214621531">
+<meta property="og:updated_time" content="2018-04-24T02:31:12.592Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="记录生活工作学习中的点点滴滴">
+<meta name="twitter:title" content="FIR滤波器">
+<meta name="twitter:description" content="1 matlab源码f1=100;f2=200;%待滤波正弦信号频率   fs=2000;%采样频率   m=(0.3*f1)/(fs/2);%定义过度带宽   M=round(8/m);%定义窗函数的长度   N=M-1;%定义滤波器的阶数   b=fir1(N,0.5*f2/(fs/2));%使用fir1函数设计滤波器   %输入的参数分别是滤波器的阶数和截止频率   figure(1)">
+<meta name="twitter:image" content="http://www.superdesigns.cn/images/20161127214604062">
 
 
 
@@ -119,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://www.superdesigns.cn/tags/"/>
+  <link rel="canonical" href="http://www.superdesigns.cn/2018/04/24/FIR滤波器/"/>
 
 
 
 
 
-  <title>tags | 阿木卜的个人博客</title>
+  <title>FIR滤波器 | 阿木卜的个人博客</title>
   
 
 
@@ -250,40 +255,250 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.superdesigns.cn/2018/04/24/FIR滤波器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿木卜">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/logo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿木卜的个人博客">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 19 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/APR/" style="font-size: 12px; color: #ccc">APR</a> <a href="/tags/CentOS/" style="font-size: 21px; color: #6f6f6f">CentOS</a> <a href="/tags/Eclipse/" style="font-size: 12px; color: #ccc">Eclipse</a> <a href="/tags/FIR/" style="font-size: 12px; color: #ccc">FIR</a> <a href="/tags/Github/" style="font-size: 12px; color: #ccc">Github</a> <a href="/tags/Gradle/" style="font-size: 12px; color: #ccc">Gradle</a> <a href="/tags/HTTP/" style="font-size: 21px; color: #6f6f6f">HTTP</a> <a href="/tags/HTTPS/" style="font-size: 21px; color: #6f6f6f">HTTPS</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #ccc">Hexo</a> <a href="/tags/Jar/" style="font-size: 12px; color: #ccc">Jar</a> <a href="/tags/Java/" style="font-size: 12px; color: #ccc">Java</a> <a href="/tags/Linux/" style="font-size: 30px; color: #111">Linux</a> <a href="/tags/Matlab/" style="font-size: 12px; color: #ccc">Matlab</a> <a href="/tags/Mysql5-7/" style="font-size: 12px; color: #ccc">Mysql5.7</a> <a href="/tags/SpringBoot/" style="font-size: 12px; color: #ccc">SpringBoot</a> <a href="/tags/Springboot/" style="font-size: 12px; color: #ccc">Springboot</a> <a href="/tags/Tomcat/" style="font-size: 21px; color: #6f6f6f">Tomcat</a> <a href="/tags/War/" style="font-size: 12px; color: #ccc">War</a> <a href="/tags/WebSocket/" style="font-size: 12px; color: #ccc">WebSocket</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">FIR滤波器</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-24T10:26:01+08:00">
+                2018-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数字滤波器/" itemprop="url" rel="index">
+                    <span itemprop="name">数字滤波器</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="1-matlab源码"><a href="#1-matlab源码" class="headerlink" title="1 matlab源码"></a>1 matlab源码</h2><p>f1=100;f2=200;%待滤波正弦信号频率  </p>
+<p>fs=2000;%采样频率  </p>
+<p>m=(0.3*f1)/(fs/2);%定义过度带宽  </p>
+<p>M=round(8/m);%定义窗函数的长度  </p>
+<p>N=M-1;%定义滤波器的阶数  </p>
+<p>b=fir1(N,0.5*f2/(fs/2));%使用fir1函数设计滤波器  </p>
+<p>%输入的参数分别是滤波器的阶数和截止频率  </p>
+<p>figure(1)  </p>
+<p>[h,f]=freqz(b,1,512);%滤波器的幅频特性图  </p>
+<p>%[H,W]=freqz(B,A,N)当N是一个整数时函数返回N点的频率向量和幅频响应向量  </p>
+<p>plot(f<em>fs/(2</em>pi),20*log10(abs(h)))%参数分别是频率与幅值  </p>
+<p>xlabel(‘频率/赫兹’);ylabel(‘增益/分贝’);title(‘滤波器的增益响应’);  </p>
+<p>figure(2)  </p>
+<p>subplot(211)  </p>
+<p>t=0:1/fs:0.5;%定义时间范围和步长  </p>
+<p>s=sin(2<em>pi</em>f1<em>t)+sin(2</em>pi<em>f2</em>t);%滤波前信号  </p>
+<p>plot(t,s);%滤波前的信号图像  </p>
+<p>xlabel(‘时间/秒’);ylabel(‘幅度’);title(‘信号滤波前时域图’);  </p>
+<p>subplot(212)  </p>
+<p>Fs=fft(s,512);%将信号变换到频域  </p>
+<p>AFs=abs(Fs);%信号频域图的幅值  </p>
+<p>f=(0:255)*fs/512;%频率采样  </p>
+<p>plot(f,AFs(1:256));%滤波前的信号频域图  </p>
+<p>xlabel(‘频率/赫兹’);ylabel(‘幅度’);title(‘信号滤波前频域图’);  </p>
+<p>figure(3)  </p>
+<p>sf=filter(b,1,s);%使用filter函数对信号进行滤波  </p>
+<p>%参数分别为滤波器系统函数的分子和分母多项式系数向量和待滤波信号输入  </p>
+<p>subplot(211)  </p>
+<p>plot(t,sf)%滤波后的信号图像  </p>
+<p>xlabel(‘时间/秒’);ylabel(‘幅度’);title(‘信号滤波后时域图’);  </p>
+<p>axis([0.2 0.5 -2 2]);%限定图像坐标范围  </p>
+<p>subplot(212)  </p>
+<p>Fsf=fft(sf,512);%滤波后的信号频域图  </p>
+<p>AFsf=abs(Fsf);%信号频域图的幅值  </p>
+<p>f=(0:255)*fs/512;%频率采样  </p>
+<p>plot(f,AFsf(1:256))%滤波后的信号频域图  </p>
+<p>xlabel(‘频率/赫兹’);ylabel(‘幅度’);title(‘信号滤波后频域图’);  </p>
+<h2 id="2-结果"><a href="#2-结果" class="headerlink" title="2 结果"></a>2 结果</h2><center><img src="/images/20161127214604062" alt="img"></center>
+
+<center><img src="https://img-blog.csdn.net/20161127214615524" alt="img"></center>
+
+<center><img src="https://img-blog.csdn.net/20161127214621531" alt="img"></center>
+
+<hr>
+<p>转载自：<a href="https://blog.csdn.net/shenziheng1/article/details/53367121" target="_blank" rel="noopener">https://blog.csdn.net/shenziheng1/article/details/53367121</a></p>
+<hr>
+
       
     </div>
     
     
     
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat.jpg" alt="阿木卜 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>通过WeChat与我联系</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>给我打赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="阿木卜 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="阿木卜 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FIR/" rel="tag"># FIR</a>
+          
+            <a href="/tags/Matlab/" rel="tag"># Matlab</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/23/WebSocket/" rel="next" title="WebSocket">
+                <i class="fa fa-chevron-left"></i> WebSocket
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -316,8 +531,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -395,6 +619,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-matlab源码"><span class="nav-number">1.</span> <span class="nav-text">1 matlab源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-结果"><span class="nav-number">2.</span> <span class="nav-text">2 结果</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
